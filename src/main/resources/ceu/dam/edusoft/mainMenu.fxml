@@ -97,12 +97,12 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Button fx:id="btConnection" layoutX="249.0" layoutY="4.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="37.0" style="-fx-background-color: #01fd76; -fx-background-color: #e00011;" styleClass="connection">
+            <Button fx:id="connectionLed" layoutX="249.0" layoutY="4.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="37.0" style="-fx-background-color: #01fd76; -fx-background-color: #e00011;" styleClass="connection">
                <effect>
                   <Glow level="1.0" />
                </effect>
             </Button>
-            <TextField fx:id="tfIP" layoutX="61.0" layoutY="80.0" prefHeight="48.0" prefWidth="80.0" promptText="Puerto">
+            <TextField fx:id="tfPort" layoutX="61.0" layoutY="80.0" prefHeight="48.0" prefWidth="80.0" promptText="Puerto">
                <effect>
                   <DropShadow />
                </effect>
@@ -110,7 +110,7 @@
                   <Font size="14.0" />
                </font>
             </TextField>
-            <Button fx:id="btIP" layoutX="151.0" layoutY="80.0" mnemonicParsing="false" onAction="#setIP" prefHeight="48.0" prefWidth="143.0" style="-fx-background-color: #1db953;">
+            <Button fx:id="btPort" layoutX="151.0" layoutY="80.0" mnemonicParsing="false" onAction="#startServer" prefHeight="48.0" prefWidth="143.0" style="-fx-background-color: #1db953;" AnchorPane.rightAnchor="0.0">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -118,7 +118,7 @@
                   <DropShadow />
                </effect>
             </Button>
-            <Label fx:id="lbIP" layoutX="154.0" layoutY="94.0" text="Establecer IP">
+            <Label fx:id="lbPort" layoutX="165.0" layoutY="94.0" text="Arrancar Servidor">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

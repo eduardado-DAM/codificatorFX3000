@@ -1,5 +1,6 @@
 package ceu.dam.edusoft.controller;
 
+import ceu.dam.edusoft.controller.component.OnOffStyle;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -17,17 +18,17 @@ import java.io.IOException;
 public class MainMenuController extends AppController implements EventHandler {
 
     @FXML
-    private TextField tfIP;
+    private TextField tfPort;
 
     @FXML
-    private Button btIP;
+    private Button btPort;
 
     @FXML
-    private Label lbIP;
+    private Label lbPort;
 
 
     @FXML
-    private Button btConnection;
+    private Button connectionLed;
 
 
     @FXML
@@ -61,18 +62,28 @@ public class MainMenuController extends AppController implements EventHandler {
     @FXML
     private BorderPane bpWindow;
 
+
+
     @FXML
     void changeWindow(ActionEvent event) throws IOException {
         changePane(FXMLPATH.Panel.CIFRAR_PANEL);
     }
 
+
+
     @FXML
-    void setIP(ActionEvent event) {
+    void startServer(ActionEvent event) {
+        Integer port = Integer.parseInt(tfPort.getText());
+        startServer(port);
 
     }
 
     @Override
     public void init() {
+
+        setCurrentController(this); //se establece como controlador en uso en el controlador padre
+
+        connectionLed.setStyle(OnOffStyle.OFF);
 
         setDefaultIP();
 
@@ -82,25 +93,23 @@ public class MainMenuController extends AppController implements EventHandler {
 
         labelTransparent();
 
-        showDisconnected();
 
 
+    }
+
+
+
+    public Button getConnectionLed() {
+        return connectionLed;
+    }
+
+    public TextField getTfPort() {
+        return tfPort;
     }
 
     private void setDefaultIP() {
-        tfIP.setText("8888");
+        tfPort.setText("8888");
     }
-
-    private void showDisconnected() {
-        btConnection.setStyle("-fx-background-color: red;");
-
-    }
-
-    private void showConnected() {
-        btConnection.setStyle("-fx-background-color: green;");
-
-    }
-
 
 
     /**
@@ -111,7 +120,7 @@ public class MainMenuController extends AppController implements EventHandler {
         lbDescifrar.setMouseTransparent(true);
         lbLoadPriKey.setMouseTransparent(true);
         lbLoadPubK.setMouseTransparent(true);
-        lbIP.setMouseTransparent(true);
+        lbPort.setMouseTransparent(true);
     }
 
     /**
@@ -130,8 +139,8 @@ public class MainMenuController extends AppController implements EventHandler {
         btLoadPrivateKey.addEventHandler(MouseEvent.MOUSE_ENTERED_TARGET, this);
         btLoadPrivateKey.addEventHandler(MouseEvent.MOUSE_EXITED_TARGET, this);
 
-        btIP.addEventHandler(MouseEvent.MOUSE_ENTERED_TARGET, this);
-        btIP.addEventHandler(MouseEvent.MOUSE_EXITED_TARGET, this);
+        btPort.addEventHandler(MouseEvent.MOUSE_ENTERED_TARGET, this);
+        btPort.addEventHandler(MouseEvent.MOUSE_EXITED_TARGET, this);
 
 
     }

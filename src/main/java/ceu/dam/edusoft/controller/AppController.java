@@ -1,5 +1,7 @@
 package ceu.dam.edusoft.controller;
 
+import ceu.dam.edusoft.controller.component.OnOffStyle;
+import ceu.dam.edusoft.server.Server;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -22,6 +24,7 @@ public abstract class AppController {
     private static Stage stage; //El único escenario de la App
     protected  BorderPane borderPaneWindow; //El panel que irá cambiando
     private Map<String, Object> parameters; //Datos no persistentes de la App
+    private AppController currentController; //El controlador de la Scene que está en uso
 
 
     public AppController() {
@@ -86,6 +89,14 @@ public abstract class AppController {
     }
 
     /**
+     * Establece el controlador de la Scene en uso
+     * @param controller
+     */
+    protected void setCurrentController(AppController controller){
+        currentController = controller;
+    }
+
+    /**
      * Cambia el espacio central del BorderPane con un Anchor pane que le pasemos por parámetro
      *
      * @param fxmlPanel
@@ -116,6 +127,20 @@ public abstract class AppController {
     protected abstract void loadState();
 
     public abstract BorderPane getBpWindow();
+
+    /**
+     * Arranca el servidor
+     * @param port puerto para escuchar peticiones
+     */
+    public void startServer(Integer port){
+            Server server = new Server();
+            server.initServer(port);
+        // si todo va bien hasta aquí, se enciende el led
+        ((MainMenuController)currentController).getConnectionLed() //es necesario hacer un casting para acceder al atributo
+                .setStyle(OnOffStyle.ON);
+
+
+    }
 
 
 }
