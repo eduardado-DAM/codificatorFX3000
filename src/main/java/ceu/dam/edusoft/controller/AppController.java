@@ -55,7 +55,7 @@ public abstract class AppController {
      * @param fxmlPath
      * @throws IOException
      */
-    public void changeScene(String fxmlPath) throws IOException {
+    public void changeScene(String fxmlPath) throws IOException, InterruptedException {
         //Carga de escena
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlPath));
         Parent parent = fxmlLoader.load();
@@ -106,7 +106,7 @@ public abstract class AppController {
     /**
      * Carga inicial de datos y componentes de la escena
      */
-    public abstract void init();
+    public abstract void init() throws InterruptedException;
 
     /**
      * Guarda los datos de entrada, selección de los usuarios

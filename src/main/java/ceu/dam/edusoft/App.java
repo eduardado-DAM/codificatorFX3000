@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -13,12 +14,15 @@ import java.io.IOException;
 public class App extends Application {
 
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) throws IOException, InterruptedException {
 
         // Primera carga del Scene
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(FXMLPATH.Scene.MAIN_MENU));
         Parent parent = fxmlLoader.load();
         Scene scene = new Scene(parent, 800, 500);
+
+        //scene.addEventFilter(MouseEvent.ANY, e -> System.out.println( e)); //todo para saber qué evento de ratón capturar luego
+
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
