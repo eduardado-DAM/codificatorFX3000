@@ -102,7 +102,14 @@
                   <Glow level="1.0" />
                </effect>
             </Button>
-            <TextField fx:id="tfIP" layoutX="61.0" layoutY="80.0" prefHeight="48.0" prefWidth="80.0" promptText="Puerto" />
+            <TextField fx:id="tfIP" layoutX="61.0" layoutY="80.0" prefHeight="48.0" prefWidth="80.0" promptText="Puerto">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
             <Button fx:id="btIP" layoutX="151.0" layoutY="80.0" mnemonicParsing="false" onAction="#setIP" prefHeight="48.0" prefWidth="143.0" style="-fx-background-color: #1db953;">
                <font>
                   <Font name="System Bold" size="14.0" />
