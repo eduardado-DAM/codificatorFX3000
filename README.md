@@ -1,11 +1,16 @@
 # CodificatorFX3000
 
-![codificatorLogo](https://i.imgur.com/hNIxWIw.png)
+<img src="https://i.imgur.com/hNIxWIw.png" alt="codificator fx 3000 Logo" width="200">
 
-![codificatorMinimalistLogo](https://i.imgur.com/rsOTiLr.png)
+<!-- <img src="src/main/resources/ceu/dam/edusoft/img/c3kDay.png" alt="codificator fx 3000 Logo" width="200"> -->
+
+<!-- ![prueba](src/main/resources/ceu/dam/edusoft/img/c3kDay.png) -->
 
 <details>
 <summary>Requerimientos</summary>
+repo seguridad Abel-> https://gitlab.com/abel.ceu/psp-dam.git
+repo javafx Abel-> https://gitlab.com/abel.ceu/interfaces-dam-jfx.git
+
 
 - Tendremos una pantalla de inicio con un logo de bienvenida.
 - Tendremos una barra de menú superior con estas opciones:
@@ -21,20 +26,28 @@
 - Las pantallas de cargar clave tendrán la opción de subir un fichero y cargarlo en memoria como certificado público o privado.
 
 </details>
+<br>
+TODO
 
-IDEAS
+- [ ] Navegación cambiando paneles
+
+<details>
+<summary>IDEAS</summary>
 
 - El programa carga con el logo
-- Se puede cambiar a modo nocturno
-- Si el programa inicia por la noche se pone en modo nocturno automáticamente
 - Hay una transición en la que el logo desaparece y aparecen los botones
 - El programa no cambia de tamaño para tener siempre el mismo fondo
 - Hay un menú falso que se llama menú falso y no hace nada. Simplemente está ahí porque me obligan :)
+  - Es retraíble para no molestar (mirar enlace más abajo, y cambia a paneles llamados panel1 panel 2 etc)
 - Aparecen los botones bellos y minimalistas
-  - Rueda dentada (que gira) para Configuración
+  - Rueda dentada (que gira) para Configuración (lado del servidor)
     - Load Public Key
     - Load Private Key
     - Puerto
     - Ip
 - Hay una app Servidor y una app Cliente. La información viaja entre apps.
 - El login guarda la clave codificada
+- 
+</details>
+- [Menú retraíble](https://stackoverflow.com/questions/37234729/javafx-slide-out-menu)
+
