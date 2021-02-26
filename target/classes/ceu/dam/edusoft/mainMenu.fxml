@@ -2,7 +2,9 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -67,7 +69,7 @@
                <effect>
                   <DropShadow />
                </effect></AnchorPane>
-            <Button layoutX="61.0" mnemonicParsing="false" onAction="#changeWindow" prefHeight="13.0" prefWidth="239.0" style="-fx-background-color: #000;" text="C3K Server v1.0" textFill="#a89f9f" AnchorPane.leftAnchor="61.0" AnchorPane.topAnchor="0.0">
+            <Button layoutX="61.0" mnemonicParsing="false" onAction="#changeWindow" prefHeight="32.0" prefWidth="239.0" style="-fx-background-color: #000;" text="C3K Server v1.0" textFill="#a89f9f" AnchorPane.leftAnchor="61.0" AnchorPane.topAnchor="0.0">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -91,6 +93,25 @@
                </font>
             </Label>
             <Label fx:id="lbLoadPriKey" layoutX="154.0" layoutY="428.0" text="Cargar Clave Privada">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="btConnection" layoutX="249.0" layoutY="4.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="37.0" style="-fx-background-color: #01fd76; -fx-background-color: #e00011;" styleClass="connection">
+               <effect>
+                  <Glow level="1.0" />
+               </effect>
+            </Button>
+            <TextField fx:id="tfIP" layoutX="61.0" layoutY="80.0" prefHeight="48.0" prefWidth="80.0" promptText="Puerto" />
+            <Button fx:id="btIP" layoutX="151.0" layoutY="80.0" mnemonicParsing="false" onAction="#setIP" prefHeight="48.0" prefWidth="143.0" style="-fx-background-color: #1db953;">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+            <Label fx:id="lbIP" layoutX="154.0" layoutY="94.0" text="Establecer IP">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

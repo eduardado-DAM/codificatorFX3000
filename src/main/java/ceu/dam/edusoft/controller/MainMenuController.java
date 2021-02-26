@@ -1,21 +1,34 @@
 package ceu.dam.edusoft.controller;
 
-import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.effect.Glow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.util.Duration;
 
 import java.io.IOException;
 
 public class MainMenuController extends AppController implements EventHandler {
+
+    @FXML
+    private TextField tfIP;
+
+    @FXML
+    private Button btIP;
+
+    @FXML
+    private Label lbIP;
+
+
+    @FXML
+    private Button btConnection;
+
 
     @FXML
     private Label lbCifrar;
@@ -53,8 +66,15 @@ public class MainMenuController extends AppController implements EventHandler {
         changePane(FXMLPATH.Panel.CIFRAR_PANEL);
     }
 
+    @FXML
+    void setIP(ActionEvent event) {
+
+    }
+
     @Override
     public void init() {
+
+        setDefaultIP();
 
         fadeLogo();
 
@@ -62,8 +82,26 @@ public class MainMenuController extends AppController implements EventHandler {
 
         labelTransparent();
 
+        showDisconnected();
+
 
     }
+
+    private void setDefaultIP() {
+        tfIP.setText("8888");
+    }
+
+    private void showDisconnected() {
+        btConnection.setStyle("-fx-background-color: red;");
+
+    }
+
+    private void showConnected() {
+        btConnection.setStyle("-fx-background-color: green;");
+
+    }
+
+
 
     /**
      * Evita que el texto de los botones sea sensible al ratón y estropee los efectos
@@ -73,6 +111,7 @@ public class MainMenuController extends AppController implements EventHandler {
         lbDescifrar.setMouseTransparent(true);
         lbLoadPriKey.setMouseTransparent(true);
         lbLoadPubK.setMouseTransparent(true);
+        lbIP.setMouseTransparent(true);
     }
 
     /**
@@ -90,6 +129,11 @@ public class MainMenuController extends AppController implements EventHandler {
 
         btLoadPrivateKey.addEventHandler(MouseEvent.MOUSE_ENTERED_TARGET, this);
         btLoadPrivateKey.addEventHandler(MouseEvent.MOUSE_EXITED_TARGET, this);
+
+        btIP.addEventHandler(MouseEvent.MOUSE_ENTERED_TARGET, this);
+        btIP.addEventHandler(MouseEvent.MOUSE_EXITED_TARGET, this);
+
+
     }
 
     /**
@@ -99,16 +143,6 @@ public class MainMenuController extends AppController implements EventHandler {
         FadeTask fadeTask = new FadeTask(this);
         Thread thread = new Thread(fadeTask);
         thread.start();
-    }
-
-
-    public void fade(ImageView imageView) { //todo debería mover este método?
-        FadeTransition fadeTransition = new FadeTransition();
-        fadeTransition.setDuration(Duration.millis(3000));
-        fadeTransition.setNode(imageView);
-        fadeTransition.setFromValue(1);
-        fadeTransition.setToValue(0);
-        fadeTransition.play();
     }
 
 
