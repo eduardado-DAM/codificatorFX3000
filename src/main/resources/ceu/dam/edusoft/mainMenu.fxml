@@ -25,7 +25,7 @@
       </BorderPane>
       <AnchorPane prefHeight="500.0" prefWidth="300.0" style="-fx-background-color: #11253a;" AnchorPane.leftAnchor="0.0">
          <children>
-            <Button layoutX="5.0" layoutY="392.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="300.0" style="-fx-background-color: #1db953;" text="Button" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <Button layoutY="414.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="300.0" style="-fx-background-color: #1db953;" text="Cargar Clave Privada" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -33,7 +33,7 @@
                   <DropShadow />
                </effect>
             </Button>
-            <Button layoutX="5.0" layoutY="304.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="300.0" style="-fx-background-color: #1db953;" text="Button" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <Button layoutY="338.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="300.0" style="-fx-background-color: #1db953;" text="Cargar Clave Pública" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -41,7 +41,7 @@
                   <DropShadow />
                </effect>
             </Button>
-            <Button layoutY="171.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="300.0" style="-fx-background-color: #1db953;" text="Button" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <Button layoutY="250.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="300.0" style="-fx-background-color: #1db953;" text="Descifrar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -49,7 +49,7 @@
                   <DropShadow />
                </effect>
             </Button>
-            <Button fx:id="btWindow" layoutX="-1.0" layoutY="61.0" mnemonicParsing="false" onAction="#changeWindow" prefHeight="48.0" prefWidth="300.0" style="-fx-background-color: #1db953;" text="Button" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <Button fx:id="btWindow" layoutY="167.0" mnemonicParsing="false" onAction="#changeWindow" prefHeight="48.0" prefWidth="300.0" style="-fx-background-color: #1db953;" text="Cifrar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -61,6 +61,14 @@
                <effect>
                   <DropShadow />
                </effect></AnchorPane>
+            <Button fx:id="btWindow1" layoutX="3.0" mnemonicParsing="false" onAction="#changeWindow" prefHeight="48.0" prefWidth="300.0" style="-fx-background-color: #000;" text="C3K Server v1.0" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
          </children>
          <effect>
             <DropShadow />
