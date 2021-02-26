@@ -11,19 +11,25 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+    Diseño del controlador:
+    - Existe un único Stage para toda la App
+    - Las Scene pueden cambiar
+        - Cada Scene tiene un BorderPane principal, el famoso borderPaneWindow. Es como la pantalla de una televisión, que irá mostrando distintos canales.
+ */
 public abstract class AppController {
 
-    private static Stage stage;
-    protected static BorderPane mainBorderPane;
-    private Map<String, Object> parameters;
+    private static Stage stage; //El único escenario de la App
+    protected  BorderPane borderPaneWindow; //El panel que irá cambiando
+    private Map<String, Object> parameters; //Datos no persistentes de la App
 
 
     public AppController() {
         parameters = new HashMap<>(); //instanciación del mapa que almacena información no persistente de la app
     }
 
-    public static void setMainPanel(BorderPane borderPane) {
-        mainBorderPane = borderPane;
+    public  void setBpWindow(BorderPane borderPane) {
+        borderPaneWindow = borderPane;
     }
 
     /**
@@ -57,8 +63,11 @@ public abstract class AppController {
         getStage().setScene(scene);
 
         //Controller
-        AppController controller = fxmlLoader.getController(); //obtenemos el controller de la escena que hayamos cargado
-        controller.init(); //invocamos el método, que contiene aquellas acciones que queremos que ocurran siempre cuando se carga una escena
+        /*
+            Este trozo de código se ejecuta cada vez que cambiamos de Scene, en cada Scene puede haber un menú diferente.
+         */
+        AppController appController = fxmlLoader.getController(); //obtenemos el controller de la escena que hayamos cargado
+        appController.init(); //invocamos el método, que contiene aquellas acciones que queremos que ocurran siempre cuando se carga una escena
         /*
             Qué hace esta línea:
                 - Cada clase controladora hereda de AppController
@@ -67,7 +76,11 @@ public abstract class AppController {
                     - Le estamos pasando la referencia del hashMap de la clase padre a la clase hija
                     - De esta manera siempre habrá accesible un hashmap que se va pasando entre controladores
          */
-        controller.setParameters(parameters);
+        appController.setParameters(parameters);
+        /*
+            Asigna quién será
+         */
+        appController.setBpWindow(appController.getBpWindow());
 
 
     }
@@ -81,9 +94,10 @@ public abstract class AppController {
     public void changePane(String fxmlPanel) throws IOException {
         //cargamos el panel
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlPanel));
-        AnchorPane anchorPane = fxmlLoader.load();
+        AnchorPane anchorPane = (AnchorPane) fxmlLoader.load();
 
-        mainBorderPane.setCenter(anchorPane); //
+        //lo asignamos
+        borderPaneWindow.setCenter(anchorPane); //
 
 
     }
@@ -101,6 +115,7 @@ public abstract class AppController {
 
     protected abstract void loadState();
 
+    public abstract BorderPane getBpWindow();
 
-    public abstract void setMainPane();
+
 }

@@ -45,7 +45,8 @@ public class MainSceneController extends AppController {
     }
 
     @Override
-    public void setMainPane() {
+    public BorderPane getBpWindow() {
+        return null;
     }
 
     public BorderPane getMainBorderPane() {

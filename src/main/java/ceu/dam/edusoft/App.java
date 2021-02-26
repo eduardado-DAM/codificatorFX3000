@@ -2,7 +2,6 @@ package ceu.dam.edusoft;
 
 import ceu.dam.edusoft.controller.AppController;
 import ceu.dam.edusoft.controller.FXMLPATH;
-import ceu.dam.edusoft.controller.MainSceneController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,18 +16,22 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
 
         // Primera carga del Scene
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(FXMLPATH.Scene.MAIN_SCENE));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(FXMLPATH.Scene.MAIN_MENU));
         Parent parent = fxmlLoader.load();
-        Scene scene = new Scene(parent, 640, 480);
+        Scene scene = new Scene(parent, 800, 500);
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
 
         // CONTROLLER DEVICE
+        /**
+         * Este trozo de código sólo se ejecuta una vez, al cargar la App
+         */
         AppController.setStage(stage); //le pasa el Stage al controlador principal (atributo estático por lo que no es necesario cargar la instancia de la clase)
-        MainSceneController mainSceneController = fxmlLoader.getController(); //obtengo el controlador de MainScene
-        mainSceneController.init();
-        //le pasa la referencia del borderpane del mainScene
-        AppController.setMainPanel(mainSceneController.getMainBorderPane());
+        AppController mainMenuController = fxmlLoader.getController(); //obtengo el controlador del menú principal
+        mainMenuController.setBpWindow(mainMenuController.getBpWindow()); //asigna, en el controlador padre, quíen es el famoso BorderPaneWindow
+        mainMenuController.init(); //arranca los funciones iniciales del controlador de la escena
+
     }
 
     public static void main(String[] args) {
