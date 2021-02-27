@@ -1,12 +1,12 @@
 package ceu.dam.edusoft.controller;
 
-import ceu.dam.edusoft.controller.component.OnOffStyle;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.Glow;
 import javafx.scene.image.ImageView;
@@ -18,10 +18,11 @@ import java.io.IOException;
 public class MainMenuController extends AppController implements EventHandler {
 
     @FXML
-    private TextField tfPort;
+    private TextArea taInfo;
 
     @FXML
-    private Button btPort;
+    private TextField tfPort;
+
 
     @FXML
     private Label lbPort;
@@ -56,6 +57,9 @@ public class MainMenuController extends AppController implements EventHandler {
     private Button btCifer;
 
     @FXML
+    private Button btStartServer;
+
+    @FXML
     private ImageView ivDarkLogo;
 
 
@@ -73,7 +77,9 @@ public class MainMenuController extends AppController implements EventHandler {
 
     @FXML
     void startServer(ActionEvent event) {
+        // si el usuario pulsa el botón se obtiene el nº de puerto
         Integer port = Integer.parseInt(tfPort.getText());
+        // se lanza el servidor desde el controlador padre pasando el puerto como parámetro
         startServer(port);
 
     }
@@ -82,6 +88,9 @@ public class MainMenuController extends AppController implements EventHandler {
     public void init() {
 
         setCurrentController(this); //se establece como controlador en uso en el controlador padre
+
+        taInfo.setVisible(false);
+        taInfo.setFocusTraversable(false);
 
         connectionLed.setStyle(OnOffStyle.OFF);
 
@@ -109,6 +118,10 @@ public class MainMenuController extends AppController implements EventHandler {
 
     private void setDefaultIP() {
         tfPort.setText("8888");
+    }
+
+    public Button getBtStartServer() {
+        return btStartServer;
     }
 
 
@@ -139,8 +152,8 @@ public class MainMenuController extends AppController implements EventHandler {
         btLoadPrivateKey.addEventHandler(MouseEvent.MOUSE_ENTERED_TARGET, this);
         btLoadPrivateKey.addEventHandler(MouseEvent.MOUSE_EXITED_TARGET, this);
 
-        btPort.addEventHandler(MouseEvent.MOUSE_ENTERED_TARGET, this);
-        btPort.addEventHandler(MouseEvent.MOUSE_EXITED_TARGET, this);
+        btStartServer.addEventHandler(MouseEvent.MOUSE_ENTERED_TARGET, this);
+        btStartServer.addEventHandler(MouseEvent.MOUSE_EXITED_TARGET, this);
 
 
     }
@@ -175,6 +188,10 @@ public class MainMenuController extends AppController implements EventHandler {
 
     public void setIvDarkLogo(ImageView ivDarkLogo) {
         this.ivDarkLogo = ivDarkLogo;
+    }
+
+    public TextArea getTaInfo() {
+        return taInfo;
     }
 
 

@@ -1,4 +1,4 @@
-package ceu.dam.edusoft.controller.component;
+package ceu.dam.edusoft.controller;
 
 import javafx.scene.control.Button;
 

@@ -1,6 +1,5 @@
 package ceu.dam.edusoft.controller;
 
-import ceu.dam.edusoft.controller.component.OnOffStyle;
 import ceu.dam.edusoft.server.Server;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,7 +21,7 @@ import java.util.Map;
 public abstract class AppController {
 
     private static Stage stage; //El único escenario de la App
-    protected  BorderPane borderPaneWindow; //El panel que irá cambiando
+    protected BorderPane borderPaneWindow; //El panel que irá cambiando
     private Map<String, Object> parameters; //Datos no persistentes de la App
     private AppController currentController; //El controlador de la Scene que está en uso
 
@@ -31,7 +30,7 @@ public abstract class AppController {
         parameters = new HashMap<>(); //instanciación del mapa que almacena información no persistente de la app
     }
 
-    public  void setBpWindow(BorderPane borderPane) {
+    public void setBpWindow(BorderPane borderPane) {
         borderPaneWindow = borderPane;
     }
 
@@ -90,9 +89,10 @@ public abstract class AppController {
 
     /**
      * Establece el controlador de la Scene en uso
+     *
      * @param controller
      */
-    protected void setCurrentController(AppController controller){
+    protected void setCurrentController(AppController controller) {
         currentController = controller;
     }
 
@@ -130,17 +130,26 @@ public abstract class AppController {
 
     /**
      * Arranca el servidor
+     *
      * @param port puerto para escuchar peticiones
      */
-    public void startServer(Integer port){
-            Server server = new Server();
-            server.initServer(port);
-        // si todo va bien hasta aquí, se enciende el led
-        ((MainMenuController)currentController).getConnectionLed() //es necesario hacer un casting para acceder al atributo
-                .setStyle(OnOffStyle.ON);
+    public void startServer(Integer port) {
 
+        //instanciación del servidor
+        Server server = new Server();
+        server.init(port, currentController);//se arranca
+
+        // si ha ido bien se enciende el led y se informa al usuario
+        /*MainMenuController mainMenuController = (MainMenuController) currentController;*/
+
+        /*mainMenuController.getConnectionLed().setStyle(OnOffStyle.ON);
+        mainMenuController.getTaInfo().setText("Esperando Peticiones");*/
 
     }
+
+
+
+
 
 
 }
